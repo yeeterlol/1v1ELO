@@ -2,7 +2,7 @@
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/yeeterlol/1v1ELO/blob/LICENSE" target="_blank">
-    <img alt="License: GPT--3" src="https://img.shields.io/badge/License-GPT--3-yellow.svg" />
+    <img alt="GPL-3.0" src="https://img.shields.io/github/license/yeeterlol/1v1ELO">
   </a>
 </p>
 
