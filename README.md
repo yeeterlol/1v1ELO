@@ -37,7 +37,7 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2022 [yeeter](https://github.com/yeeterlol).<br />
-This project is [GPLv3](https://github.com/yeeterlol/1v1ELO/blob/LICENSE) licensed.
+This project is [GPL-3.0](https://github.com/yeeterlol/1v1ELO/blob/LICENSE) licensed.
 
 ***
 _This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
