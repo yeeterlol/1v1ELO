@@ -51,7 +51,7 @@ def main():
   print(Fore.RED + random.choice(quotes))
   print(Fore.BLUE + "1) Boost")
   print(Fore.BLUE + "2) Exit")
-  choice = input("> ")
+  choice = input(Fore.RED + "> ")
   if choice == "1":
     clear()
     elo()
@@ -66,6 +66,7 @@ def main():
 def elo():
   print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
   while True: 
+    
     headers = {
       "accept": "*/*",
       "accept-language": "en-US,en;q=0.9",
@@ -79,11 +80,15 @@ def elo():
     "sec-fetch-site": "cross-site",
     "sec-gpc": "1"
     }
-    r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=1v1_Competitive&matchResult=win&killsCount=1&deathsCount=0&isCompetitive=true&rankType=0&battlePassId=BPS2", headers=headers)
-    j = r.json()
-    r = j["CustomRating"]
-    print(Fore.RED + f"Your elo: {r}")
-    time.sleep(5)
+    try: 
+        r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=1v1_Competitive&matchResult=win&killsCount=1&deathsCount=0&isCompetitive=true&rankType=0&battlePassId=BPS2", headers=headers)
+        j = r.json()
+        r = j["CustomRating"]
+        print(Fore.RED + f"Your elo: {r}")
+        time.sleep(5)
+    except:
+        print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
+        time.sleep(60)
     
   
 def leave():
