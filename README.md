@@ -1,5 +1,5 @@
 <h1 align="center">Welcome to 1v1ELO 👋</h1>
-<img align="center" alt="1v1ELO" src="https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/assets/assets.png" />
+<img style="display:block; margin-left: auto; margin-right: auto; width: 50%;" alt="1v1ELO" src="https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/assets/assets.png" />
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/yeeterlol/1v1ELO/wiki" target="_blank">
