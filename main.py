@@ -2,11 +2,23 @@ import requests
 import colorama 
 import json
 import time
+import random
 from time import sleep
 from colorama import init, Fore 
+from os import system, name
+quotes = ["Boost your elo with 1v1Elo!", "If you need help, go to the 1v1Elo github and submit a issue at https://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User, UID 1", "For unlimited elo no rate limited, type 2!!!!"]
 
 init(autoreset=True)
-# Main page
+def clear():
+  
+    # for windows
+    if name == 'nt':
+        _ = system('cls')
+  
+    # for mac and linux(here, os.name is 'posix')
+    else:
+        _ = system('clear')
+    
 try:
     config = json.load(open('config.json'))
 except:
@@ -36,19 +48,23 @@ def main():
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
 """)
-  print(Fore.RED + "Boost your 1v1.lol Elo!")
+  print(Fore.RED + random.choice(quotes))
   print(Fore.BLUE + "1) Boost")
   print(Fore.BLUE + "2) Exit")
   choice = input("> ")
   if choice == "1":
+    clear()
     elo()
   elif choice == "2":
     leave()
   else: 
     print(Fore.BLUE + "You didn't insert something or it wasn't correct")
+    time.sleep(1)
+    clear() 
     main()
 
 def elo():
+  print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
   while True: 
     headers = {
       "accept": "*/*",
