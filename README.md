@@ -1,4 +1,5 @@
 <h1 align="center">Welcome to 1v1ELO 👋</h1>
+<img align="center" alt="1v1ELO" src="https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/assets/assets.png" />
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/yeeterlol/1v1ELO/wiki" target="_blank">
@@ -8,7 +9,6 @@
     <img alt="License: GPL--3.0" src="https://img.shields.io/badge/License-GPL--3.0-yellow.svg" />
   </a>
 </p>
-<img align="center" alt="1v1ELO" src="https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/assets/assets.png" />
 
 > A elo boosting tool for 1v1.lol
 
