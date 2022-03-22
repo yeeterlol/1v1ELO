@@ -30,7 +30,7 @@ python main.py
 
 👤 **yeeter**
 
-* Github: [@yeeterlol](https://github.com/yeeterlol)
+* GitHub: [@yeeterlol](https://github.com/yeeterlol)
 
 ## 🤝 Contributing
 
