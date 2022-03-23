@@ -50,12 +50,17 @@ def main():
 """)
   print(Fore.RED + random.choice(quotes))
   print(Fore.BLUE + "1) Boost")
-  print(Fore.BLUE + "2) Exit")
+  print(Fore.BLUE + "2) View Profile")
+  print(Fore.BLUE + "3) Exit")
   choice = input(Fore.RED + "> ")
   if choice == "1":
     clear()
     selection()
   elif choice == "2":
+    clear()
+    profile()
+  elif choice == "3":
+    clear()
     leave()
   else: 
     print(Fore.BLUE + "You didn't insert something or it wasn't correct")
@@ -100,8 +105,8 @@ def elo():
     try: 
         r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=1v1_Competitive&matchResult=win&killsCount=1&deathsCount=0&isCompetitive=true&rankType=0&battlePassId=BPS2", headers=headers)
         j = r.json()
-        r = j["CustomRating"]
-        print(Fore.RED + f"Your elo: {r}")
+        e = j["CustomRating"]
+        print(Fore.RED + f"Your elo: {e}")
         time.sleep(5)
     except:
         print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
@@ -131,12 +136,58 @@ def elo2v2():
     try:
         r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=Teams_2v2_Competitive&matchResult=win&killsCount=2&deathsCount=0&isCompetitive=true&rankType=1&battlePassId=BPS2", headers=headers2v2)
         j = r.json()
-        r = j["DuosRating"]
-        print(Fore.RED + f"Your elo: {r}")
+        e = j["DuosRating"]
+        print(Fore.RED + f"Your elo: {e}")
         time.sleep(5)
     except:
         print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
         time.sleep(60)
 
+def profile():
+  print(Fore.RED + "1v1ELO | Profile Viewing")
+  user = input(Fore.RED + "What is your nickname? > ")
+  header = {
+    "accept": "*/*",
+    "accept-language": "en-US,en;q=0.9",
+    "auth-token": check,
+    "cache-control": "no-cache",
+    "content-type": "application/x-www-form-urlencoded",
+    "firebase-config-ids": "",
+    "pragma": "no-cache",
+    "sec-fetch-dest": "empty",
+    "sec-fetch-mode": "cors",
+    "sec-fetch-site": "cross-site",
+    "sec-gpc": "1"
+  }
+  try: 
+    r = requests.get(f"https://us-central1-justbuild-cdb86.cloudfunctions.net/player/login?nickname={user}&getDefaultProducts=false", headers=header)
+    j = r.json()
+    comp = j["CustomRating"]
+    comp2v2 = j["DuosRating"]
+    try:
+      coins = j["HardCurrency"]
+    except:
+      coins = "0"
+    nick = j["Nickname"]
+    xp = j["XP"]
 
+    print(Fore.RED + f"1v1 Comp Elo: {comp}")
+    print(Fore.RED + f"2v2 Comp Elo: {comp2v2}")
+    print(Fore.RED + f"Coins: {coins}")
+    print(Fore.RED + f"Nickname: {nick}")
+    print(Fore.RED + f"XP: {xp}")
+  except:
+    print(Fore.RED + "Your nickname isn't correct!")
+    print(Fore.BLUE + "1) Retry")
+    print(Fore.BLUE + "2) Home")
+    choice = input(">")
+    if choice == "1":
+      profile()
+    elif choice == "2":
+      main()
+    else: 
+      print(Fore.RED + "Just sending you home...")
+      time.sleep(1)
+      clear()
+      main()
 main()
