@@ -69,9 +69,19 @@ def main():
     main()
   
 def selection():
+  print(Fore.RED + """
+ ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
+███║██║   ██║███║██╔════╝██║     ██╔═══██╗
+╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
+ ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
+ ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
+ ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
+            Mode Selection
+  """)
   print(Fore.RED + "What mode do you want to select?")
   print(Fore.BLUE + "1) Solos")
   print(Fore.BLUE + "2) Duos")
+  print(Fore.BLUE + "3) Back")
   option = input(Fore.RED + "> ")
   if option == "1":
     clear()
@@ -79,6 +89,9 @@ def selection():
   elif option == "2":
     clear()
     elo2v2()
+  elif option == "3":
+    clear()
+    main()
   else:
     print(Fore.BLUE + "You didn't select anything correct")
     time.sleep(1)
@@ -86,7 +99,15 @@ def selection():
     selection()
 
 def elo():
-  print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
+  print(Fore.RED + """
+ ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
+███║██║   ██║███║██╔════╝██║     ██╔═══██╗
+╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
+ ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
+ ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
+ ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
+            1v1 Competitive 
+  """)
   while True: 
     
     headers = {
@@ -118,7 +139,15 @@ def leave():
   exit()
 
 def elo2v2():
-  print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
+  print(Fore.RED + """
+ ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
+███║██║   ██║███║██╔════╝██║     ██╔═══██╗
+╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
+ ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
+ ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
+ ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
+            2v2 Competitive 
+  """)
   while True:
     headers2v2 = {
       "accept": "*/*",
@@ -144,8 +173,21 @@ def elo2v2():
         time.sleep(60)
 
 def profile():
-  print(Fore.RED + "1v1ELO | Profile Viewing")
-  user = input(Fore.RED + "What is your nickname? > ")
+  print(Fore.RED + """
+ ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
+███║██║   ██║███║██╔════╝██║     ██╔═══██╗
+╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
+ ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
+ ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
+ ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
+            Profile Viewing
+  """)
+  user = input(Fore.RED + "What is your nickname (Enter nothing to go)? > ")
+  if user == "":
+    print(Fore.RED + "Going back home..")
+    time.sleep(1)
+    clear()
+    main()
   header = {
     "accept": "*/*",
     "accept-language": "en-US,en;q=0.9",
