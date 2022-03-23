@@ -54,7 +54,7 @@ def main():
   choice = input(Fore.RED + "> ")
   if choice == "1":
     clear()
-    elo()
+    selection()
   elif choice == "2":
     leave()
   else: 
@@ -62,6 +62,23 @@ def main():
     time.sleep(1)
     clear() 
     main()
+  
+def selection():
+  print(Fore.RED + "What mode do you want to select?")
+  print(Fore.BLUE + "1) Solos")
+  print(Fore.BLUE + "2) Duos")
+  option = input(Fore.RED + "> ")
+  if option == "1":
+    clear()
+    elo()
+  elif option == "2":
+    clear()
+    elo2v2()
+  else:
+    print(Fore.BLUE + "You didn't select anything correct")
+    time.sleep(1)
+    clear()
+    selection()
 
 def elo():
   print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
@@ -94,5 +111,32 @@ def elo():
 def leave():
   print(Fore.RED + "Goodbye!")
   exit()
+
+def elo2v2():
+  print(Fore.RED + "Thank you using 1v1ELO! I hope you enjoy our program :)")
+  while True:
+    headers2v2 = {
+      "accept": "*/*",
+      "accept-language": "en-US,en;q=0.9",
+      "auth-token": check,
+      "cache-control": "no-cache",
+      "content-type": "application/x-www-form-urlencoded",
+      "firebase-config-ids": "{\"BattlePassID\":\"BPS2\",\"GameEventsID\":\"default\",\"DailyRewardsID\":\"default\",\"GameModesID\":\"default\",\"StoreSettingsID\":\"default\",\"ProductsID\":\"default\",\"GeneralConfigID\":\"default\",\"ChallengesID\":\"default\"}",
+      "pragma": "no-cache",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site",
+      "sec-gpc": "1"
+    }
+    try:
+        r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=Teams_2v2_Competitive&matchResult=win&killsCount=2&deathsCount=0&isCompetitive=true&rankType=1&battlePassId=BPS2", headers=headers2v2)
+        j = r.json()
+        r = j["DuosRating"]
+        print(Fore.RED + f"Your elo: {r}")
+        time.sleep(5)
+    except:
+        print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
+        time.sleep(60)
+
 
 main()
