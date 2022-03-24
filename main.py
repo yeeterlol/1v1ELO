@@ -6,7 +6,7 @@ import random
 from time import sleep
 from colorama import init, Fore 
 from os import system, name
-quotes = ["Boost your elo with 1v1Elo!", "If you need help, go to the 1v1Elo github and submit a issue at https://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User, UID 1", "For unlimited elo no rate limited, type 3!!!!"]
+quotes = ["Boost your elo with 1v1Elo!", "If you need help, submit a issue at \nhttps://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User\nUID 1", "For unlimited elo no rate limited, type 3!!!!"]
 
 init(autoreset=True)
 def clear():
@@ -40,15 +40,16 @@ else:
     pass
 
 def main():
-  print(Fore.RED + """
+  random_quote = random.choice(quotes)
+  print(Fore.RED + f"""
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
  ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
+{random_quote}
 """)
-  print(Fore.RED + random.choice(quotes))
   print(Fore.BLUE + "1) Boost")
   print(Fore.BLUE + "2) View Profile")
   print(Fore.BLUE + "3) Exit")
