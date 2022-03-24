@@ -170,8 +170,8 @@ def elo2v2():
         print(Fore.RED + f"Your elo: {e}")
         time.sleep(5)
     except:
-        print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
-        time.sleep(60)
+        print(Fore.RED + "❌ | Rate limited, waiting 90 seconds")
+        time.sleep(90)
 
 def profile():
   print(Fore.RED + """
@@ -183,7 +183,7 @@ def profile():
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
             Profile Viewing
   """)
-  user = input(Fore.RED + "What is your nickname (Enter nothing to go)? > ")
+  user = input(Fore.RED + "What is your nickname (Enter nothing to go back home)? > ")
   if user == "":
     print(Fore.RED + "Going back home..")
     time.sleep(1)
@@ -219,6 +219,9 @@ def profile():
     print(Fore.RED + f"Coins: {coins}")
     print(Fore.RED + f"Nickname: {nick}")
     print(Fore.RED + f"XP: {xp}")
+    profile_end = input()
+    clear()
+    main()
   except:
     print(Fore.RED + "Your nickname isn't correct!")
     print(Fore.BLUE + "1) Retry")
