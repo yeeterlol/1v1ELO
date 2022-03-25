@@ -131,8 +131,8 @@ def elo():
         print(Fore.RED + f"Your elo: {e}")
         time.sleep(5)
     except:
-        print(Fore.RED + "❌ | Rate limited, waiting 60 seconds")
-        time.sleep(60)
+        print(Fore.RED + "❌ | Rate limited, waiting 90 seconds")
+        time.sleep(90)
     
   
 def leave():
