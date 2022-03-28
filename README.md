@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to 1v1ELO 👋</h1>
 
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/yeeterlol/1v1ELO/wiki" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -11,6 +11,7 @@
 </p>
 
 > A elo boosting tool for 1v1.lol
+> Works with Solo & Duo competitive
 
 ### 🏠 [Homepage](https://github.com/yeeterlol/1v1ELO/#readme)
 
