@@ -6,8 +6,26 @@ import random
 from time import sleep
 from colorama import init, Fore 
 from os import system, name
+# Randomly selected quotes 
+# You can add or remove quotes
+# If you want to remove it entirely, cut line 54 and you won't get an error 
 quotes = ["Boost your elo with 1v1Elo!", "If you need help, submit a issue at \nhttps://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User\nUID 1", "For unlimited elo no rate limited, type 3!!!!"]
-
+version = "1.1.0"
+check = True
+# Version checking
+try:
+    r = requests.get("https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/version.txt").text
+    if check == True:
+      if r != version:
+        print(Fore.RED + "Your version isn't updated!")
+        input()
+        exit()
+      pass  
+    else:
+      pass
+except:
+  print(Fore.RED + "We couldn't check your version! Check the GitHub")
+  pass
 init(autoreset=True)
 def clear():
   
@@ -19,10 +37,12 @@ def clear():
     else:
         _ = system('clear')
     
+# Checking if config.json exists
 try:
     config = json.load(open('config.json'))
 except:
     print(f'{Fore.RED}Adding config.json!')
+    # Creates new file
     with open("config.json", "a") as file:
       file.write("""
 {
@@ -56,15 +76,18 @@ def main():
   choice = input(Fore.RED + "> ")
   if choice == "1":
     clear()
+    # Get to selection page
     selection()
   elif choice == "2":
     clear()
+    # Profile viewing
     profile()
   elif choice == "3":
     clear()
-    leave()
+    print(Fore.RED + "Goodbye!")
+    exit()
   else: 
-    print(Fore.BLUE + "You didn't insert something or it wasn't correct")
+    print(Fore.BLUE + "You did not select anything!")
     time.sleep(1)
     clear() 
     main()
@@ -94,7 +117,7 @@ def selection():
     clear()
     main()
   else:
-    print(Fore.BLUE + "You didn't select anything correct")
+    print(Fore.BLUE + "You didn't select anything!")
     time.sleep(1)
     clear()
     selection()
@@ -118,11 +141,11 @@ def elo():
       "cache-control": "no-cache",
       "content-type": "application/x-www-form-urlencoded",
       "firebase-config-ids": "{\"BattlePassID\":\"BPS2\",\"GameEventsID\":\"default\",\"DailyRewardsID\":\"default\",\"GameModesID\":\"default\",\"StoreSettingsID\":\"default\",\"ProductsID\":\"default\",\"GeneralConfigID\":\"default\",\"ChallengesID\":\"default\"}",
-    "pragma": "no-cache",
-    "sec-fetch-dest": "empty",
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "cross-site",
-    "sec-gpc": "1"
+      "pragma": "no-cache",
+      "sec-fetch-dest": "empty",
+      "sec-fetch-mode": "cors",
+      "sec-fetch-site": "cross-site",
+      "sec-gpc": "1"
     }
     try: 
         r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=1v1_Competitive&matchResult=win&killsCount=1&deathsCount=0&isCompetitive=true&rankType=0&battlePassId=BPS2", headers=headers)
@@ -135,10 +158,6 @@ def elo():
         time.sleep(90)
     
   
-def leave():
-  print(Fore.RED + "Goodbye!")
-  exit()
-
 def elo2v2():
   print(Fore.RED + """
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
@@ -213,7 +232,6 @@ def profile():
       coins = "0"
     nick = j["Nickname"]
     xp = j["XP"]
-
     print(Fore.RED + f"1v1 Comp Elo: {comp}")
     print(Fore.RED + f"2v2 Comp Elo: {comp2v2}")
     print(Fore.RED + f"Coins: {coins}")
@@ -223,17 +241,7 @@ def profile():
     clear()
     main()
   except:
-    print(Fore.RED + "Your nickname isn't correct!")
-    print(Fore.BLUE + "1) Retry")
-    print(Fore.BLUE + "2) Home")
-    choice = input(">")
-    if choice == "1":
-      profile()
-    elif choice == "2":
-      main()
-    else: 
-      print(Fore.RED + "Just sending you home...")
-      time.sleep(1)
-      clear()
-      main()
+    print(Fore.RED + "Rate limited!")
+    input("> ")
+    main()
 main()
