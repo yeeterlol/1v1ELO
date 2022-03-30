@@ -1,32 +1,17 @@
 import requests
-import colorama 
 import json
 import time
 import random
 from time import sleep
-from colorama import init, Fore 
 from os import system, name
+from halo import Halo
+from yachalk import chalk
 # Randomly selected quotes 
 # You can add or remove quotes
 # If you want to remove it entirely, cut line 54 and you won't get an error 
 quotes = ["Boost your elo with 1v1Elo!", "If you need help, submit a issue at \nhttps://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User\nUID 1", "For unlimited elo no rate limited, type 3!!!!"]
-version = "1.1.0"
-check = True
-# Version checking
-try:
-    r = requests.get("https://raw.githubusercontent.com/yeeterlol/1v1ELO/main/version.txt").text
-    if check == True:
-      if r != version:
-        print(Fore.RED + "Your version isn't updated!")
-        input()
-        exit()
-      pass  
-    else:
-      pass
-except:
-  print(Fore.RED + "We couldn't check your version! Check the GitHub")
-  pass
-init(autoreset=True)
+
+
 def clear():
   
     # for windows
@@ -41,7 +26,7 @@ def clear():
 try:
     config = json.load(open('config.json'))
 except:
-    print(f'{Fore.RED}Adding config.json!')
+    print(chalk.red("Adding config.json"))
     # Creates new file
     with open("config.json", "a") as file:
       file.write("""
@@ -54,26 +39,25 @@ except:
 check = config["token"]
 
 if check == "INSERT-TOKEN":
-    print(f'{Fore.RED}Please put your token in config.json!')
+    print(chalk.red("Please put your token in config.json"))
     exit()
 else:
     pass
 
 def main():
   random_quote = random.choice(quotes)
-  print(Fore.RED + f"""
+  print(chalk.red(f""" 
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
  ██║╚██╗ ██╔╝ ██║██╔══╝  ██║     ██║   ██║
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
-{random_quote}
-""")
-  print(Fore.BLUE + "1) Boost")
-  print(Fore.BLUE + "2) View Profile")
-  print(Fore.BLUE + "3) Exit")
-  choice = input(Fore.RED + "> ")
+{random_quote}"""))
+  print(chalk.blue("1) Boost"))
+  print(chalk.blue("2) View Profile"))
+  print(chalk.blue("3) Exit"))
+  choice = input(chalk.red("> "))
   if choice == "1":
     clear()
     # Get to selection page
@@ -84,16 +68,16 @@ def main():
     profile()
   elif choice == "3":
     clear()
-    print(Fore.RED + "Goodbye!")
+    print(chalk.red("Goodbye!"))
     exit()
   else: 
-    print(Fore.BLUE + "You did not select anything!")
+    print(chalk.BLUE("You did not select anything!"))
     time.sleep(1)
     clear() 
     main()
   
 def selection():
-  print(Fore.RED + """
+  print(chalk.red("""
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
@@ -101,12 +85,12 @@ def selection():
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
             Mode Selection
-  """)
-  print(Fore.RED + "What mode do you want to select?")
-  print(Fore.BLUE + "1) Solos")
-  print(Fore.BLUE + "2) Duos")
-  print(Fore.BLUE + "3) Back")
-  option = input(Fore.RED + "> ")
+  """))
+  print(chalk.red("What mode do you want to select?"))
+  print(chalk.blue("1) Solos"))
+  print(chalk.blue("2) Duos"))
+  print(chalk.blue("3) Back"))
+  option = input(chalk.red("> "))
   if option == "1":
     clear()
     elo()
@@ -117,13 +101,13 @@ def selection():
     clear()
     main()
   else:
-    print(Fore.BLUE + "You didn't select anything!")
+    print(chalk.blue("You didn't select anything!"))
     time.sleep(1)
     clear()
     selection()
 
 def elo():
-  print(Fore.RED + """
+  print(chalk.red("""
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
@@ -131,7 +115,7 @@ def elo():
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
             1v1 Competitive 
-  """)
+  """))
   while True: 
     
     headers = {
@@ -151,15 +135,18 @@ def elo():
         r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=1v1_Competitive&matchResult=win&killsCount=1&deathsCount=0&isCompetitive=true&rankType=0&battlePassId=BPS2", headers=headers)
         j = r.json()
         e = j["CustomRating"]
-        print(Fore.RED + f"Your elo: {e}")
+        print(chalk.red(f"Your elo: {e}"))
         time.sleep(5)
     except:
-        print(Fore.RED + "❌ | Rate limited, waiting 90 seconds")
+        spinner = Halo(text=chalk.blue('❌ | Rate limited, waiting 90 seconds'), spinner='dots')
+        spinner.start()
         time.sleep(90)
+        spinner.stop()
+
     
   
 def elo2v2():
-  print(Fore.RED + """
+  print(chalk.red("""
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
@@ -167,7 +154,7 @@ def elo2v2():
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
             2v2 Competitive 
-  """)
+  """))
   while True:
     headers2v2 = {
       "accept": "*/*",
@@ -186,14 +173,16 @@ def elo2v2():
         r = requests.get("https://us-central1-justbuild-cdb86.cloudfunctions.net/player/updateProgressAndStats?gameMode=Teams_2v2_Competitive&matchResult=win&killsCount=2&deathsCount=0&isCompetitive=true&rankType=1&battlePassId=BPS2", headers=headers2v2)
         j = r.json()
         e = j["DuosRating"]
-        print(Fore.RED + f"Your elo: {e}")
+        print(chalk.red(f"Your elo: {e}"))
         time.sleep(5)
     except:
-        print(Fore.RED + "❌ | Rate limited, waiting 90 seconds")
+        spinner = Halo(text=chalk.blue('❌ | Rate limited, waiting 90 seconds'), spinner='dots')
+        spinner.start()
         time.sleep(90)
+        spinner.stop()
 
 def profile():
-  print(Fore.RED + """
+  print(chalk.red("""
  ██╗██╗   ██╗ ██╗███████╗██╗      ██████╗ 
 ███║██║   ██║███║██╔════╝██║     ██╔═══██╗
 ╚██║██║   ██║╚██║█████╗  ██║     ██║   ██║
@@ -201,11 +190,13 @@ def profile():
  ██║ ╚████╔╝  ██║███████╗███████╗╚██████╔╝
  ╚═╝  ╚═══╝   ╚═╝╚══════╝╚══════╝ ╚═════╝
             Profile Viewing
-  """)
-  user = input(Fore.RED + "What is your nickname (Enter nothing to go back home)? > ")
+  """))
+  user = input(chalk.red("What is your nickname (Enter nothing to go back home)? > "))
   if user == "":
-    print(Fore.RED + "Going back home..")
+    spinner = Halo(text=chalk.blue('Going back home...'), spinner='dots')
+    spinner.start()
     time.sleep(1)
+    spinner.stop()
     clear()
     main()
   header = {
@@ -232,16 +223,16 @@ def profile():
       coins = "0"
     nick = j["Nickname"]
     xp = j["XP"]
-    print(Fore.RED + f"1v1 Comp Elo: {comp}")
-    print(Fore.RED + f"2v2 Comp Elo: {comp2v2}")
-    print(Fore.RED + f"Coins: {coins}")
-    print(Fore.RED + f"Nickname: {nick}")
-    print(Fore.RED + f"XP: {xp}")
+    print(chalk.red(f"1v1 Comp Elo: {comp}"))
+    print(chalk.red(f"2v2 Comp Elo: {comp2v2}"))
+    print(chalk.red(f"Coins: {coins}"))
+    print(chalk.red(f"Nickname: {nick}"))
+    print(chalk.red(f"XP: {xp}"))
     profile_end = input()
     clear()
     main()
   except:
-    print(Fore.RED + "Rate limited!")
+    print(chalk.red("Rate limited!"))
     input("> ")
     main()
 main()
