@@ -8,7 +8,7 @@ from halo import Halo
 from yachalk import chalk
 # Randomly selected quotes 
 # You can add or remove quotes
-# If you want to remove it entirely, cut line 54 and you won't get an error 
+# If you want to remove it entirely, cut line 56 and you won't get an error 
 quotes = ["Boost your elo with 1v1Elo!", "If you need help, submit a issue at \nhttps://github.com/yeeterlol/1v1Elo/issues", "Gain unlimited elo today!", "Nice little easter egg :)", "Boost your 1v1.lol Elo!", "If you bought this, you got scammed. Sorry to say it!", "10/10 coding moment", "You might get rate limited so try again later! :)", "fortnite balls", "You are logged in as User\nUID 1", "For unlimited elo no rate limited, type 3!!!!"]
 
 
